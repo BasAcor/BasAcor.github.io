@@ -142,14 +142,15 @@
 
             <label for="queryType">Query Type *</label>
             <div class="query-type">
-                <input type="radio" name="query-type">
-                <label for="query-type">General Enquiry</label>
-              </div>
-            
-              <div class="query-type">
-                <input type="radio" name="query-type">
-                <label for="query-type">Support Request</label>
-              </div>
+            <label>
+            <input type="radio" name="query-type" id="general-enquiry">
+                General Enquiry
+            </label>
+            <label>
+            <input type="radio" name="query-type" id="support-request">
+                Support Request
+            </label>
+            </div>
 
             <button type="submit">Submit</button>
         </form>
@@ -166,6 +167,12 @@
         const lastNameError = document.getElementById('lastNameError');
         const emailError = document.getElementById('emailError');
         const successMessage = document.getElementById('successMessage');
+
+        const enquiryElement = document.querySelector('general-enquiry');
+
+        enquiryElement.addEventListener('click', () => {
+            console.log('General Enquiry seleccionado'); 
+        });
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
