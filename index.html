@@ -138,13 +138,18 @@
             <div class="error" id="emailError"></div>
 
             <label for="queryType">Query Type *</label>
-            <div>
-                <input type="radio" id="generalEnquiry" name="queryType" value="General Enquiry" required>
-                <label for="generalEnquiry">General Enquiry</label>
+            <div class="query-type">
+            <label>
+                <input type="radio" name="query-type" id="general-enquiry">
+                General Enquiry
+            </label>
             </div>
-            <div>
-                <input type="radio" id="supportRequest" name="queryType" value="Support Request" required>
-                <label for="supportRequest">Support Request</label>
+
+            <div class="query-type1"
+            <label>
+                <input type="radio" name="query-type" id="support-request">
+                Support Request
+            </label>
             </div>
 
             <button type="submit">Submit</button>
@@ -162,6 +167,15 @@
         const lastNameError = document.getElementById('lastNameError');
         const emailError = document.getElementById('emailError');
         const successMessage = document.getElementById('successMessage');
+
+        const enquiryElement = document.querySelector('general-enquiry'); // Suponiendo que la opción tenga una clase "general-enquiry"
+
+
+
+        enquiryElement.addEventListener('click', () => {
+        // Aquí ejecutarías el código para seleccionar la opción
+        console.log('General Enquiry seleccionado'); 
+        });
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
