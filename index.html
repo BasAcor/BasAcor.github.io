@@ -17,14 +17,17 @@
 
 
         .query-type {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
         }
 
         .query-type input {
-        margin-right: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
         }
 
         .container {
@@ -141,15 +144,15 @@
             <div class="error" id="emailError"></div>
 
             <label for="queryType">Query Type *</label>
-            <div class="query-type">
-            <label>
-            <input type="radio" name="query-type" id="general-enquiry">
-                General Enquiry
-            </label>
-            <label>
-            <input type="radio" name="query-type" id="support-request">
-                Support Request
-            </label>
+            <div class="query-type" id="query-type-container">
+                <div class="query-option" id="general-enquiry">
+                    <input type="radio" name="query-type" id="general-enquiry" value="General Enquiry">
+                    <label for="general-enquiry">General Enquiry</label>
+                </div>
+                <div class="query-option" id="support-request">
+                    <input type="radio" name="query-type" id="support-request" value="Support Request">
+                    <label for="support-request">Support Request</label>
+                </div>
             </div>
 
             <button type="submit">Submit</button>
@@ -167,11 +170,19 @@
         const lastNameError = document.getElementById('lastNameError');
         const emailError = document.getElementById('emailError');
         const successMessage = document.getElementById('successMessage');
+        const queryTypeContainer = document.getElementById('query-type-container');
+        const generalEnquiry = document.getElementById('general-enquiry');
+        const supportRequest = document.getElementById('support-request');
 
-        const enquiryElement = document.querySelector('general-enquiry');
-
-        enquiryElement.addEventListener('click', () => {
-            console.log('General Enquiry seleccionado'); 
+        queryTypeContainer.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+            if (clickedElement.tagName === 'INPUT') {
+                // If the clicked element is a radio button, select it
+                clickedElement.checked = true;
+            } else if (clickedElement.tagName === 'LABEL') {
+                // If the clicked element is a label, select the associated radio button
+                clickedElement.previousElementSibling.checked = true;
+            }
         });
 
         form.addEventListener('submit', (event) => {
